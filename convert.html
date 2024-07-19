@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8227481434236687"
+     crossorigin="anonymous"></script>
+    <title>Currency Converter</title>
+    <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 100px;
+          background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXRPidkISXXMpAnjkzjWRfUctsDCTbxsCQ7w&usqp=CAU');
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+  
+        form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+  
+        #result {
+          margin-top: 20px;
+          padding: 10px;
+          background-color: lightblue;
+          border-radius: 5px;
+        }
+  
+        button {
+          margin-top: 20px;
+        }
+        footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        background-color: #333;
+        color:coral;
+        text-align: center;
+      }
+      </style>
+  </head>
+  <body>
+    <h1 style="color: yellow;">Currency Converter</h1>
+    <form id="conversion-form">
+      <label for="amount" style="color: yellow;">Amount:</label>
+      <input type="number" id="amount" name="amount" step="0.01" required>
+      <label for="from-currency" style="color: yellow;">From:</label>
+      <select id="from-currency" name="from-currency" required>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="JPY">JPY</option>
+        <option value="BGN">BGN</option>
+        <option value="CZK">CZK</option>
+        <option value="DKK">DKK</option>
+        <option value="GBP">GBP</option>
+        <option value="HUF">HUF</option>
+        <option value="PLN">PLN</option>
+        <option value="RON">RON</option>
+        <option value="SEK">SEK</option>
+        <option value="ILS">ILS</option>
+        <option value="INR">INR</option>
+        <option value="KRW">KRW	</option>
+        <option value="MXN">MXN</option>
+        <option value="MYR">MYR</option>
+        <option value="NZD">NZD</option>
+        <option value="PHP">PHP</option>
+        <option value="SGD">SGD</option>
+        <option value="THB">THB	</option>
+        <option value="ZAR">ZAR</option>
+        <option value="CAD">CAD</option>
+        <option value="CNY">CNY</option>
+        <option value="HKD">HKD</option>
+        <!-- Add more currencies here -->
+      </select>
+      <label for="to-currency" style="color: yellow;">To:</label>
+      <select id="to-currency" name="to-currency" required>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="JPY">JPY</option>
+        <option value="BGN">BGN</option>
+        <option value="CZK">CZK</option>
+        <option value="DKK">DKK</option>
+        <option value="GBP">GBP</option>
+        <option value="HUF">HUF</option>
+        <option value="PLN">PLN</option>
+        <option value="RON">RON</option>
+        <option value="SEK">SEK</option>
+        <option value="ILS">ILS</option>
+        <option value="INR">INR</option>
+        <option value="KRW">KRW	</option>
+        <option value="MXN">MXN</option>
+        <option value="MYR">MYR</option>
+        <option value="NZD">NZD</option>
+        <option value="PHP">PHP</option>
+        <option value="SGD">SGD</option>
+        <option value="THB">THB	</option>
+        <option value="ZAR">ZAR</option>
+        <option value="CAD">CAD</option>
+        <option value="CNY">CNY</option>
+        <option value="HKD">HKD</option>
+        <!-- Add more currencies here -->
+      </select>
+      <button type="submit" style="color: blue;">Convert</button>
+    </form>
+    <div id="result" style="color: mediumvioletred;"></div>
+    <footer>made by Basem Halaika <p style="color: yellow; display: inline;">2024</p>
+          <a href="https://www.profitablegatecpm.com/dnw6ssqr7?key=69a0b4b3a0f69d142ce9e4b8123a0857" style="width: 50px; color: #FFCC00; size: 50% ; ">click here</a>
+    </footer>
+    <div id="container-a64ae4fd374028e63ec30586863e57e7"></div>
+    <script async="async" data-cfasync="false" src="//pl22851746.profitablegatecpm.com/a64ae4fd374028e63ec30586863e57e7/invoke.js"></script>
+    
+    <script>
+      // Replace YOUR_APP_ID with your actual Open Exchange Rates app ID
+      const appId = 'd71cc0e724934a5687d69345146cae3b';
+
+      // Get the form and result elements
+      const form = document.getElementById('conversion-form');
+      const result = document.getElementById('result');
+
+      // Add a submit event listener to the form
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        // Get the form data
+        const formData = new FormData(form);
+        const amount = formData.get('amount');
+        const fromCurrency = formData.get('from-currency');
+        const toCurrency = formData.get('to-currency');
+
+        // Fetch the exchange rate from the Open Exchange Rates API
+        const response = await fetch(`https://openexchangerates.org/api/latest.json?app_id=${appId}&symbols=${fromCurrency},${toCurrency}`);
+        const data = await response.json();
+
+        // Calculate the converted amount
+        const convertedAmount = (data.rates[toCurrency] / data.rates[fromCurrency]) * amount;
+
+        // Display the converted amount
+        result.textContent = `result : ${convertedAmount} ${toCurrency}`;
+      });
+    </script>
+  </body>
+</html>
